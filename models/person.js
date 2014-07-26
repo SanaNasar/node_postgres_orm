@@ -1,33 +1,45 @@
 var db = require('./db');
 
-function Person(params) {
+function Person(params) { // constructor function
   this.firstname = params.firstname;
   this.lastname = params.lastname;
   this.id = params.id;
-};
+}
 
 
 Person.all = function(callback){
-  db.query("YOUR QUERY HERE",[], function(err, res){
+  db.query("SELECT * FROM people",[], function(err, res){
     var allPeople = [];
+    if (err) {
+      console.log("Error!");
+
+    }
     // do something here with res
-    callback(err, allPeople);
+    res.rows.forEach(function(params){
+      allPeople.push(new Person(params));
+    });
+      callback(err, allPeople);
   });
-}
+};
 
 Person.findBy = function(key, val, callback) {
-  db.query("",[val], function(err, res){
+  db.query("SELECT * FROM people WHERE "+ key + " = $1",[val], function(err, res){
     var foundRow, foundPerson;
     // do something here with res
+    res.rows.forEach(function(params){
     callback(err, foundPerson);
+  });
   });
 };
 
 
 
 Person.create = function(params, callback){
-  db.query("", [params.firstname, params.lastname], function(err, res){
+  db.query("INSERT INTO people (firstname, lastname) VALUES ($1, $2);", [params.firstname, params.lastname], function(err, res){
     var createdRow, newPerson;
+    res.rows.forEach(function(params){
+      newPerson.push(new Person(params));
+    });
     callback(err, newPerson);
   });
 };
@@ -57,17 +69,17 @@ Person.prototype.update = function(params, callback) {
       console.error("OOP! Something went wrong!", err);
     } else {
       updatedRow = res.rows[0];
-      _this.firstname = updatedRow.firstname;
-      _this.lastname = updatedRow.lastname;
+      this.firstname = updatedRow.firstname;
+      this.lastname = updatedRow.lastname;
     }
-    callback(err, _this)
+    callback(err, _this);
   });
-}
+};
 
 Person.prototype.destroy = function(){
-  db.query("", [this.id], function(err, res) {
-    callback(err)
+  db.query(" DELETE FROM people WHERE ;", [this.id], function(err, res) {
+    callback(err);
   });
-}
+};
 
 module.exports = Person;
