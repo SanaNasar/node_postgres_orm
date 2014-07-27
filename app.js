@@ -11,18 +11,14 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded());
 app.use(methodOverride("_method"));
 
-
+// corresponds to Person.all()
 app.get("/people", function(req, res){
-  Person.all(function(err, allPeople) {
-    if (err) {
-      res.render("people/index", {people: [allPeople]});
-      // maybe create error page with "go back" button
-      console.log('There was an error!', err);
-    }
+  Person.all(function(err, allPeople){
+  res.render("people/index", {people: allPeople});
+  });
 });
 
-});
-
+// corresponds to Person.create?
 app.get("/people/new", function(req, res){
   res.render("people/new");
 });
