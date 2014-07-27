@@ -9,10 +9,14 @@ Models.Person.all(function(err, people){
 });
 
 var myPerson = {firstname:'Cody', lastname: 'Banks'};
-		
+	
 Person.create(myPerson, function(err, newPerson) {
 	console.log(myPerson);
 });
+
+// Person.destroy(function(err, Person.prototype ) {
+	
+// }
 
 
 // Models.Person.findBy("id", 1, function(err, person){
