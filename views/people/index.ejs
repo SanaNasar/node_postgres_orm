@@ -3,7 +3,10 @@
   <head>
   </head>
   <body>
-    People Index
-
+    <h2>People Index</h2>
+    <marquee><b>This is a database for list of people</b></marquee>
+	<% people.forEach(function(person){ %>
+    <ul><%= person.id + ") " + person.firstname + " " + person.lastname %></ul>
+    <% }) %>
   </body>
 </html>
