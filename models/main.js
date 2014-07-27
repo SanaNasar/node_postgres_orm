@@ -8,11 +8,18 @@ Models.Person.all(function(err, people){
   console.log(people);
 });
 
+var myPerson = {firstname:'Cody', lastname: 'Banks'};
+		
+Person.create(myPerson, function(err, newPerson) {
+	console.log(myPerson);
+});
+
+
 // Models.Person.findBy("id", 1, function(err, person){
 //   console.log("found", person);
 //   person.update({firstname: "sam", lastname: "creek"}, function(err, person){
-//     console.log("UPDATED:", person)
+//     console.log("UPDATED:", person);
 //   });
-// })
+// });
 
 module.exports = Models;
