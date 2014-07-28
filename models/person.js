@@ -6,7 +6,7 @@ function Person(params) { // constructor function
   this.id = params.id;
 }
 
-
+// displays all the entries
 Person.all = function(callback){
   db.query("SELECT * FROM people",[], function(err, res){
     var allPeople = [];
@@ -16,12 +16,14 @@ Person.all = function(callback){
     }
     // do something here with res
     res.rows.forEach(function(params){
+      // Created a new instance of person using new Person function
       allPeople.push(new Person(params));
     });
       callback(err, allPeople);
   });
 };
 
+// find user by it's id
 Person.findBy = function(key, val, callback) {
   db.query("SELECT * FROM people WHERE "+ key + " = $1",[val], function(err, res){
     var foundRow, foundPerson;
@@ -45,6 +47,7 @@ Person.create = function(params, callback){
   });
 };
 
+// update function made for us
 Person.prototype.update = function(params, callback) {
   var colNames = [];
   var colVals = [];
@@ -77,6 +80,7 @@ Person.prototype.update = function(params, callback) {
   });
 };
 
+// destroy function
 Person.prototype.destroy = function(){
   db.query(" DELETE FROM people WHERE ;", [this.id], function(err, res) {
     callback(err);
