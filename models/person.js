@@ -26,6 +26,7 @@ Person.findBy = function(key, val, callback) {
   db.query("SELECT * FROM people WHERE "+ key + " = $1",[val], function(err, res){
     var foundRow, foundPerson;
     // do something here with res
+    foundRow = res.rows[0];
     res.rows.forEach(function(params){
     callback(err, foundPerson);
   });

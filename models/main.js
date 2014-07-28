@@ -1,5 +1,6 @@
 var Person = require('./person');
 
+
 var Models = {};
 
 Models.Person = Person;
@@ -8,16 +9,35 @@ Models.Person.all(function(err, people){
   console.log(people);
 });
 
-var myPerson = {firstname:'Cody', lastname: 'Banks'};
-	
-Person.create(myPerson, function(err, newPerson) {
-	console.log(myPerson);
-});
+// var firstname = prompt("What's your first name?");
+// var lastname = prompt("What's your last name?");
 
-// Person.destroy(function(err, Person.prototype ) {
-	
-// }
+//Testing my app 
 
+var myPerson = {firstname: 'Cody', lastname: 'Banks'};
+
+// create() function test
+// Person.create(myPerson, function(err, newPerson) {
+// 	console.log(myPerson);
+// });
+
+// findby test
+// Models.Person.findBy('id', 1, function (err, person) {
+//   console.log("Checking database: " + person);
+// });
+
+// .all() function test
+// Models.Person.all(function(err, people){
+//   console.log(people);
+// });
+
+// delete() function test
+// Models.Person.findBy("id", 10, function (err, person){
+//   var id = 10;
+// person.destroy(function(err) {
+//   console.log("Deleted")
+// });
+// })
 
 // Models.Person.findBy("id", 1, function(err, person){
 //   console.log("found", person);
