@@ -31,7 +31,7 @@ var myPerson = {firstname: 'Cody', lastname: 'Banks'};
 //   console.log(people);
 // });
 
-// delete() function test
+// delete() function test trying to figure out
 // Models.Person.findBy("id", 10, function (err, person){
 //   var id = 10;
 // person.destroy(function(err) {
